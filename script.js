@@ -124,6 +124,74 @@ document.querySelectorAll('.thm').forEach(btn => {
     });
 });
 
+// ── PHOTO CYCLING ───────────────────────────────────────────
+(function initPhotoCycle() {
+    // 📸 Add your 3 photo filenames here
+    const photos = ['profile.png', 'photo2.png', 'photo3.png'];
+    const photoLabels = ['Main Photo', 'Photo 2', 'Photo 3'];
+    let current = 0;
+    let isFlipping = false;
+
+    const avatarEl = document.getElementById('avatar-click');
+    const photoImg = document.getElementById('profile-photo');
+    const dots = document.querySelectorAll('.photo-dot');
+    const hintEl = document.querySelector('.photo-tap-hint');
+
+    if (!avatarEl || !photoImg) return;
+
+    function goToPhoto(index) {
+        if (isFlipping || index === current) return;
+        isFlipping = true;
+
+        // Start flip animation
+        avatarEl.classList.add('photo-flip');
+
+        setTimeout(() => {
+            // Swap image at halfway through flip
+            current = index;
+            photoImg.src = photos[current];
+            photoImg.style.display = 'block';
+            document.querySelector('.av-fb').style.display = 'none';
+
+            // Update dots
+            dots.forEach((d, i) => d.classList.toggle('active', i === current));
+
+            // Update hint label briefly
+            if (hintEl) {
+                hintEl.textContent = photoLabels[current];
+                setTimeout(() => { hintEl.textContent = '👆 Tap'; }, 1200);
+            }
+        }, 230);
+
+        setTimeout(() => {
+            avatarEl.classList.remove('photo-flip');
+            isFlipping = false;
+        }, 520);
+    }
+
+    function nextPhoto() {
+        goToPhoto((current + 1) % photos.length);
+    }
+
+    // Tap / click the avatar → next photo
+    avatarEl.addEventListener('click', nextPhoto);
+
+    // Tap individual dots → go to that photo
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', (e) => {
+            e.stopPropagation();
+            goToPhoto(i);
+        });
+    });
+
+    // Hide tap hint after first tap
+    avatarEl.addEventListener('click', () => {
+        if (hintEl && current > 0) {
+            hintEl.style.animation = 'none';
+        }
+    }, { once: true });
+})();
+
 // ── NAVBAR SCROLL ───────────────────────────────────────────
 const navbar = document.getElementById('navbar');
 const backTop = document.getElementById('back-top');
