@@ -66,16 +66,23 @@
         </div>
         <div class="hero-content">
             <div class="avatar-wrap">
-                <div class="avatar-3d">
-                    <img src="profile.png" alt="Nandan" class="profile-img"
+                <div class="avatar-3d" id="avatar-click" title="Tap to change photo">
+                    <img src="profile.png" alt="Nandan" class="profile-img" id="profile-photo"
                         onerror="this.style.display='none';document.querySelector('.av-fb').style.display='flex'" />
                     <div class="av-fb">NK⚡❤️</div>
+                    <div class="photo-tap-hint">👆 Tap</div>
                 </div>
                 <div class="av-ring r1"></div>
                 <div class="av-ring r2"></div>
                 <div class="av-ring r3"></div>
                 <div class="av-orbit">
                     <div class="orbit-dot"></div>
+                </div>
+                <!-- Photo indicator dots -->
+                <div class="photo-dots">
+                    <span class="photo-dot active" data-index="0"></span>
+                    <span class="photo-dot" data-index="1"></span>
+                    <span class="photo-dot" data-index="2"></span>
                 </div>
             </div>
             <p class="hero-sup">Hello World, I'm</p>
@@ -274,7 +281,8 @@
                 <p>Personal portfolio with 3D animations, Three.js background, dark/light/solar modes, and responsive
                     design.</p>
                 <div class="proj-tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
-                <a href="#" class="proj-link">View Project <span>→</span></a>
+                <a href="https://github.com/Nandankumar0000/Nandankumar" target="_blank" class="proj-link">View Project
+                    <span>→</span></a>
             </div>
             <div class="proj-card" style="--d:0.15s">
                 <div class="proj-glow"></div>
@@ -284,7 +292,8 @@
                 <p>IoT-based intelligent street lighting system with Python automation for energy efficiency and
                     real-time control.</p>
                 <div class="proj-tags"><span>Python</span><span>IoT</span><span>Automation</span></div>
-                <a href="#" class="proj-link">View Project <span>→</span></a>
+                <a href="https://github.com/Nandankumar0000/smartstreetlight" target="_blank" class="proj-link">View
+                    Project <span>→</span></a>
             </div>
             <div class="proj-card featured" style="--d:0.3s">
                 <div class="proj-glow"></div>
@@ -294,7 +303,8 @@
                 <p>Full-stack database application for VTU faculty to manage course attainment records, reports and
                     outcomes.</p>
                 <div class="proj-tags"><span>Python</span><span>Oracle SQL</span><span>Web Dev</span></div>
-                <a href="#" class="proj-link">View Project <span>→</span></a>
+                <a href="https://github.com/Nandankumar0000/attainment-application-" target="_blank"
+                    class="proj-link">View Project <span>→</span></a>
             </div>
         </div>
     </section>
